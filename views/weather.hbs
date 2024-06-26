@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+</head>
+<body>
+  <h1>Weather App</h1>
+
+  <form action="/" method="GET">
+    <label for="city">Enter city:</label>
+    <input type="text" id="city" name="city" value="{{#if weather.region}}{{weather.region}}{{else}}Ho Chi Minh{{/if}}">
+    <button type="submit">Get Weather</button>
+  </form>
+
+  {{#if weather.isSuccess}}
+    <h2>Weather in {{weather.region}}, {{weather.country}}</h2>
+    <p>Temperature: {{weather.temperature}}°C</p>
+    <p>Wind Speed: {{weather.wind_speed}} m/s</p>
+    <p>Precipitation: {{weather.precip}} mm</p>
+    <p>Cloud Cover: {{weather.cloudcover}}%</p>
+  {{else}}
+    <p>Error: {{weather.err.message}}</p>
+  {{/if}}
+</body>
+</html>
